@@ -3,9 +3,11 @@ import React, {useState} from "react";
 import {CountryList} from "../components/CountryList";
 import {Region} from "../types/types";
 import styles from './HomePage.module.css';
+import {useTheme} from "../components/ThemeContext";
 
 const ALL="All";
 export const HomePage:React.FC= () => {
+    const { theme, toggleTheme } = useTheme();
     const { countries } = useCountries();
     const regions = [ALL, ...Object.values(Region)];
 
@@ -19,6 +21,9 @@ export const HomePage:React.FC= () => {
 
     return (
         <div className={styles.main}>
+        <div>
+          <button onClick={toggleTheme}>Toggle Theme</button>
+        </div>
             <div className={styles.filter_panel}>
                     <input
                         className={styles.input}
