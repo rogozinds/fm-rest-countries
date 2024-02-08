@@ -1,21 +1,28 @@
 :root {
   /* Light theme variables */
   --text-color-light: #000;
-  --background-color-light: #fff;
+  --sec-text-color-light:#D8D8D8;
+  --background-color-light: #FAFAFA;
+ --secondary-background-color-light: #FFFFFF;
 
   /* Dark theme variables */
   --text-color-dark: #fff;
-  --background-color-dark: #333;
+  --background-color-dark: #212E37;
+  --secondary-background-color-dark: #2B3743;
 }
 
 .lightTheme {
   --text-color: var(--text-color-light);
+  --sec-text-color: var(--sec-text-color-light);
   --background-color: var(--background-color-light);
+  --secondary-background-color: var(--secondary-background-color-light);
 }
 
 .darkTheme {
   --text-color: var(--text-color-dark);
+  --sec-text-color: var(--text-color-dark);
   --background-color: var(--background-color-dark);
+  --secondary-background-color: var(--secondary-background-color-dark);
 }
 #app {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -24,7 +31,6 @@
 
   color-scheme: light dark;
    color: var(--text-color);
-  /*color: rgba(255, 255, 255, 0.87);*/
   background-color: var(--background-color);
 
   font-synthesis: none;

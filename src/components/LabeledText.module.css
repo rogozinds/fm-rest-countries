@@ -10,7 +10,7 @@
 }
 
 .value {
-    color: #686868;
+    color: var(--sec-text-color);
     text-transform: capitalize;
     text-overflow: ellipsis;
     max-width: 200px;
