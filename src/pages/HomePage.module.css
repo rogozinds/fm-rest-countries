@@ -5,6 +5,26 @@
     /*justify-content: flex-start;*/
     /*align-items: center;*/
     width: 100%;
+    padding:2rem;
+
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+
+
+}
+.search_container {
+  position: relative;
+  display: inline-block;
+}
+
+.search_icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color);
+  opacity: 0.7;
 }
 .filter_panel {
     display: flex;
@@ -13,8 +33,12 @@
     width: 100%;
     margin-bottom: 2rem;
 }
+
 .input {
-    background-color: #fff;
+    /*TODO check how to fix this properly*/
+    outline: none;
+    color: var(--text-color);
+    background-color: var(--secondary-background-color);
     background-size: 24px;
       padding-inline-start: 52px;
   padding-inline-end: 10px;
@@ -26,8 +50,15 @@
   border-radius: 4px;
 
 }
+.select:focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--background-color);
+}
 .select {
-    background-color: #fff;
+    color: var(--text-color);
+    outline: none;
+    background-color: var(--secondary-background-color);
     padding-inline-start: 52px; /* Adjust if you're adding an icon inside the select */
     padding-inline-end: 10px; /* Adjust as needed, especially if you have a dropdown arrow */
     padding-block: 0;
@@ -39,7 +70,6 @@
     appearance: none; /* Remove default browser styling */
     -webkit-appearance: none; /* Also for Safari */
     -moz-appearance: none; /* Also for Firefox */
-    /*background-image: url('path-to-your-dropdown-icon.svg'); !* Custom dropdown icon *!*/
     background-repeat: no-repeat;
     background-position: right 10px center; /* Position for the dropdown icon */
     background-size: 24px; /* Size of the dropdown icon */

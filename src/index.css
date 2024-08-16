@@ -2,13 +2,15 @@
   /* Light theme variables */
   --text-color-light: #000;
   --sec-text-color-light:#D8D8D8;
-  --background-color-light: #FAFAFA;
+  --background-color-light: #F2F2F2;
  --secondary-background-color-light: #FFFFFF;
+  --focus-color-light: #2B3743;
 
   /* Dark theme variables */
   --text-color-dark: #fff;
   --background-color-dark: #212E37;
   --secondary-background-color-dark: #2B3743;
+  --focus-color-dark: #F2F2F2;
 }
 
 .lightTheme {
@@ -16,6 +18,7 @@
   --sec-text-color: var(--sec-text-color-light);
   --background-color: var(--background-color-light);
   --secondary-background-color: var(--secondary-background-color-light);
+    --focus-color: var(--focus-color-light);
 }
 
 .darkTheme {
@@ -23,6 +26,7 @@
   --sec-text-color: var(--text-color-dark);
   --background-color: var(--background-color-dark);
   --secondary-background-color: var(--secondary-background-color-dark);
+    --focus-color: var(--focus-color-dark);
 }
 #app {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -30,13 +34,15 @@
   font-weight: 400;
 
   color-scheme: light dark;
-   color: var(--text-color);
+  color: var(--text-color);
   background-color: var(--background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  width: 100%;
 }
 
 a {
