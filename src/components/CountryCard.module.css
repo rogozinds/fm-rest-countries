@@ -1,6 +1,7 @@
 
 .card {
     max-width: 400px;
+    max-height: 336px;
     background-color: var(--secondary-background-color);
     border-radius: 0.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -12,11 +13,11 @@
   width: 100%; /* Ensures the flag image fills the width of the card */
   height: auto; /* Keeps the image aspect ratio intact */
   display: block; /* Removes bottom margin/padding of image */
-  max-height: 40%; /* Limits the flag image to 40% of the card's height */
+  max-height: 50%; /* Limits the flag image to 40% of the card's height */
   object-fit: cover; /* Ensures the image covers the area, might crop if aspect ratio doesn't match */
 }
 .header {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 500;
     margin-bottom: 1rem;
     text-align: left;

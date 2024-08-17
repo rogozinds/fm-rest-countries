@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage';
 import { CountryPage } from './pages/CountryPage';
 import {useTheme} from "./components/ThemeContext";
 import Header from "./components/Header.tsx";
+import {TestPage} from "./pages/TestPage.tsx";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
               <Route path="/countries/:countryid" element={<CountryPage />} />
               <Route path="/" element={<HomePage />} />
               <Route path="/home" element={<Navigate to="/" replace />} />
+                <Route path="/test" element={<TestPage />} />
             </Routes>
           </Router>
       </div>

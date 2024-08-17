@@ -5,12 +5,13 @@
 
 .label {
     font-weight: bold;
+    font-size: 0.8rem;
     margin-right: 8px;
     text-transform: capitalize;
 }
 
 .value {
-    color: var(--sec-text-color);
+    font-size: 0.8rem;
     text-transform: capitalize;
     text-overflow: ellipsis;
     max-width: 200px;

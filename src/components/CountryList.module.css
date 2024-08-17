@@ -6,6 +6,14 @@
 
 @media (max-width: 768px) {
     .list {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: repeat(2, minmax(auto, 400px));
+        gap: 2rem;
+        justify-items: center;
+    }
+}
+@media (max-width: 480px) {
+    .list {
+        grid-template-columns: 1fr;
+        justify-items: center;
     }
 }

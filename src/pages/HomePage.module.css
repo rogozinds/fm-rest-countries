@@ -43,7 +43,9 @@
       padding-inline-start: 52px;
   padding-inline-end: 10px;
   padding-block: 0;
-  width: 400px;
+    width: 100%;
+    min-width: 250px;
+    max-width: 400px;
   height: 48px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   border: 1px solid transparent;
@@ -62,7 +64,9 @@
     padding-inline-start: 52px; /* Adjust if you're adding an icon inside the select */
     padding-inline-end: 10px; /* Adjust as needed, especially if you have a dropdown arrow */
     padding-block: 0;
-    width: 400px; /* Match the input width */
+    /*width: 100%;*/
+    width: 200px;
+    max-width: 200px;
     height: 48px; /* Match the input height */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Same shadow as input */
     border: 1px solid transparent; /* Match the input border */
@@ -87,5 +91,13 @@
         justify-content: space-between;
         width: 100%;
         margin-bottom: 2rem;
+    }
+
+    .search_container, .select {
+        width: 100%;
+    }
+
+    .input, .select {
+        max-width: none;
     }
 }
