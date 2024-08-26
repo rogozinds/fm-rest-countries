@@ -1,63 +1,84 @@
-import {Country, DetailedCountry} from "../types/types";
+import React, { useState, useEffect, useTransition } from "react";
+import { useNavigate } from "react-router-dom";
+import { DetailedCountry } from "../types/types";
 import styles from './CountryDetailWidget.module.css';
-import {useNavigate} from "react-router-dom";
-import {LabeledText} from "./LabeledText";
-import {useAtom} from "jotai";
-import {countryIdToName} from "../store/country"; // Import the CSS module
+import { LabeledText } from "./LabeledText";
+import { countryIdToCountry } from '../store/country';
+import { useAtom } from "jotai";
+
 export interface Props {
     country: DetailedCountry;
 }
 
 export const CountryDetailWidget: React.FC<Props> = ({country}) => {
-
     const navigate = useNavigate();
-    const borderCountries = country.borderCountries;
-    const goDetailPage = (name: string) => {
-        debugger;
-        navigate(`/countries/${name}`);
-    }
-    // const foo = useAtom(countryIdToName);
+    const [idToCountryMap] = useAtom(countryIdToCountry);
+    const [borderCountries, setBorderCountries] = useState<string[]>([]);
+    const [isPending, startTransition] = useTransition();
+
+    useEffect(() => {
+        startTransition(() => {
+            if (idToCountryMap) {
+                const updatedBorderCountries = country.borderCountries.map(borderId => {
+                    const borderCountry = idToCountryMap[borderId];
+                    return borderCountry ? borderCountry.name : borderId;
+                });
+                debugger;
+                setBorderCountries(updatedBorderCountries);
+            }
+        });
+    }, [idToCountryMap, country.borderCountries]);
+
+    const handleBack = () => {
+        navigate('/');
+    };
+
+    const handleBorderCountryClick = (countryName: string) => {
+        navigate(`/countries/${encodeURIComponent(countryName)}`);
+    };
 
     return (
-        <div className={styles.container}>
-            <img className={styles.flag} src={country.flagUrl} alt={country.flagAlt}/>
-            <div className={styles.content}>
-                {/*row1*/}
-                <div className={styles.header}>{country.name}</div>
-                {/*row2*/}
-                {/*col1*/}
-                <div className={styles.row2}>
-                    <div className={styles.col1}>
-                        <LabeledText label={"Country ID"} value={country.id}></LabeledText>
-                        <LabeledText label={"Native Name"} value={country.nativeName}></LabeledText>
-                        <LabeledText label={"Population"} value={country.population}></LabeledText>
-                        <LabeledText label={"Region"} value={country.region}></LabeledText>
-                        <LabeledText label={"Sub Region"} value={country.subRegion}></LabeledText>
-                        <LabeledText label={"Capital"} value={country.capital}></LabeledText>
-                    </div>
-                    {/*col2*/}
-
-                    <div className={styles.col2}>
-                        <LabeledText label={"Top Level Domain"} value={country.domains}></LabeledText>
-                        <LabeledText label={"Currencies"} value={country.currencies}></LabeledText>
-                        <LabeledText label={"Languages"} value={country.languages}></LabeledText>
-                        <LabeledText label={"Borders"} value={country.borderCountries}></LabeledText>
-                    </div>
+        <div className={styles.outerContainer}>
+            <button onClick={handleBack} className={styles.backButton}>
+                Back
+            </button>
+            <div className={styles.container}>
+                <div className={styles.flagColumn}>
+                    <img className={styles.flag} src={country.flagUrl} alt={country.flagAlt} />
                 </div>
-                {/*row3*/}
-                {/*<div className={styles.borders}>*/}
-                {/*    <h2>Border Countries</h2>*/}
-                {/*    ({borderCountries && borderCountries.map((countryId) => {*/}
-                {/*        return (*/}
-                {/*            <button onClick={() => {*/}
-                {/*                goDetailPage(countryId)*/}
-                {/*            }*/}
-                {/*            }>{countryId}</button>*/}
-                {/*        )*/}
-                {/*    }*/}
-                {/*)}*/}
-                {/*</div>*/}
-
+                <div className={styles.infoColumn}>
+                    <h2 className={styles.countryName}>{country.name}</h2>
+                    <div className={styles.infoGrid}>
+                        <div>
+                            <LabeledText label="Native Name" value={country.nativeName} />
+                            <LabeledText label="Population" value={country.population.toLocaleString()} />
+                            <LabeledText label="Region" value={country.region} />
+                            <LabeledText label="Sub Region" value={country.subRegion} />
+                            <LabeledText label="Capital" value={country.capital} />
+                        </div>
+                        <div>
+                            <LabeledText label="Top Level Domain" value={country.domains.join(', ')} />
+                            <LabeledText label="Currencies" value={country.currencies.join(', ')} />
+                            <LabeledText label="Languages" value={country.languages.join(', ')} />
+                        </div>
+                    </div>
+                    {borderCountries.length > 0 && (
+                        <div className={styles.borderCountries}>
+                            <h3>Border Countries:</h3>
+                            <div className={styles.borderList}>
+                                {borderCountries.map((borderCountry, index) => (
+                                    <button
+                                        key={index}
+                                        className={styles.borderCountry}
+                                        onClick={() => handleBorderCountryClick(borderCountry)}
+                                    >
+                                        {borderCountry}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

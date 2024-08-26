@@ -19,10 +19,9 @@ export const countriesAtom = atomWithRefresh(async () => {
         mapByName:  _.keyBy(countries, "name")
     };
 });
-export const countryIdToName = atom(async (get)=>{
-   const atomValue =await get(countriesAtom) ;
-    debugger;
-   return  _.keyBy(atomValue.countries, "id")
+export const countryIdToCountry = atom(async (get) => {
+   const atomValue = await get(countriesAtom);
+   return _.keyBy(atomValue.countries, "id") as Record<string, Country>;
 })
 
 export const countriesLoadable = loadable(countriesAtom);

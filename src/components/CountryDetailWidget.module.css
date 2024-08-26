@@ -1,36 +1,15 @@
-/*//MY*/
-/*.container {*/
-/*    display: grid;*/
-/*    grid-template-rows: 100%;*/
-/*    grid-template-columns: 50% 50%;*/
-/*}*/
-/*.main {*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.content {*/
-/*    display: grid;*/
-/*    grid-template-rows: 30% 40% 30%;*/
-/*    grid-template-columns: 50% 50%;*/
-/*}*/
-/*CHAT GPT*
-/*@media (max-width: 768px) {*/
-/*    .card {*/
-/*        grid-template-columns: 1fr; !* Single column on mobile *!*/
-/*    }*/
-/*}*/
 .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    height: 30vh; /* Full viewport height, adjust as needed */
-    gap: 10rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
 }
 
 .flag {
-    width: 100%; /* Fill the column width */
-    height: 100%; /* Fill the column height */
-    object-fit: cover; /* Cover the area without losing aspect ratio */
+    width: 560px;
+    height: 401px;
+    object-fit: cover;
 }
+
 .content {
     display: grid;
     grid-template-rows: 30% auto 1fr; /* Divide into three rows */
@@ -63,4 +42,85 @@
 .labeledText {
     /* Example, adjust as needed */
     margin-bottom: 10px; /* Space between each LabeledText */
+}
+
+.outerContainer {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: inherit; /* This will ensure it inherits the background from its parent */
+}
+
+.backButton {
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    padding: 0.5rem 0;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+}
+
+.backButton::before {
+    content: '←';
+    margin-right: 0.5rem;
+    font-size: 1.2em;
+}
+
+.backButton:hover {
+    color: var(--focus-color);
+}
+
+.countryName {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.borderCountries {
+    margin-top: 2rem;
+}
+
+.borderList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.borderCountry {
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    border: none;
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.borderCountry:hover {
+    background-color: var(--focus-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .infoGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .flag {
+        width: 320px;
+        height: 229px;
+    }
 }
