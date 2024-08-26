@@ -18,13 +18,14 @@ export const CountryDetailWidget: React.FC<Props> = ({country}) => {
 
     useEffect(() => {
         startTransition(() => {
-            if (idToCountryMap) {
+            if (idToCountryMap && country.borderCountries) {
                 const updatedBorderCountries = country.borderCountries.map(borderId => {
                     const borderCountry = idToCountryMap[borderId];
                     return borderCountry ? borderCountry.name : borderId;
                 });
-                debugger;
                 setBorderCountries(updatedBorderCountries);
+            } else {
+                setBorderCountries([]);
             }
         });
     }, [idToCountryMap, country.borderCountries]);
