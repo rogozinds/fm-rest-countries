@@ -20,7 +20,7 @@ export const CountryDetailWidget: React.FC<Props> = ({country}) => {
     const navigate = useNavigate();
     const [idToCountryMap] = useAtom(countryIdToCountry);
     const [borderCountries, setBorderCountries] = useState<string[]>([]);
-    const [isPending, startTransition] = useTransition();
+    const [_, startTransition] = useTransition();
 
     useEffect(() => {
         startTransition(() => {

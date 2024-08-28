@@ -84,6 +84,9 @@
 }
 
 @media (max-width: 768px) {
+    .main {
+        padding: 1rem;
+    }
     .filter_panel {
         display: flex;
         flex-direction: column;

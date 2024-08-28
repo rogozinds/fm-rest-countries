@@ -5,7 +5,7 @@ import {useCountries} from "../hooks/country";
 
 
 export const CountryPage: React.FC = () => {
-    const { countryid } = useParams<{ countryid: string }>();
+    const { countryId } = useParams<{ countryId: string }>();
     const navigate = useNavigate();
     const { mapByName, countries } = useCountries();
 
@@ -13,7 +13,7 @@ export const CountryPage: React.FC = () => {
         return <div>Loading...</div>;
     }
 
-    const country = mapByName[countryid];
+    const country = countryId ? mapByName[countryId] : null;
 
     if (!country) {
         return (

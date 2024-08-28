@@ -7,13 +7,6 @@ export interface Props {
     countries : Country[];
 }
 export const CountryList: React.FC<Props> = ({ countries }) => {
-    const Row = ({ index, style }: { index: number; style: React.CSSProperties }) => {
-        return (<div style={style}>
-            <CountryCard country={countries[index]} />
-        </div>
-        );
-    }
-
 
     return (
         <div className={styles.list}>

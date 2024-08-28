@@ -1,4 +1,4 @@
-import {Country, CountryFromRest, DetailedCountry} from "../types/types";
+import {CountryFromRest, DetailedCountry} from "../types/types";
 
 export const fromRest=(fromRest:CountryFromRest):DetailedCountry=>{
     let capital ="";
