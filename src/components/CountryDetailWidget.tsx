@@ -2,13 +2,19 @@ import React, { useState, useEffect, useTransition } from "react";
 import { useNavigate } from "react-router-dom";
 import { DetailedCountry } from "../types/types";
 import styles from './CountryDetailWidget.module.css';
-import { LabeledText } from "./LabeledText";
 import { countryIdToCountry } from '../store/country';
 import { useAtom } from "jotai";
 
 export interface Props {
     country: DetailedCountry;
 }
+
+const LabeledText: React.FC<{ label: string; value: string }> = ({ label, value }) => (
+    <div className={styles.labeledText}>
+        <span>{label}: </span>
+        <span>{value}</span>
+    </div>
+);
 
 export const CountryDetailWidget: React.FC<Props> = ({country}) => {
     const navigate = useNavigate();
@@ -65,18 +71,16 @@ export const CountryDetailWidget: React.FC<Props> = ({country}) => {
                     </div>
                     {borderCountries.length > 0 && (
                         <div className={styles.borderCountries}>
-                            <h3>Border Countries:</h3>
-                            <div className={styles.borderList}>
-                                {borderCountries.map((borderCountry, index) => (
-                                    <button
-                                        key={index}
-                                        className={styles.borderCountry}
-                                        onClick={() => handleBorderCountryClick(borderCountry)}
-                                    >
-                                        {borderCountry}
-                                    </button>
-                                ))}
-                            </div>
+                            <span className={styles.borderCaption}>Border Countries:</span>
+                            {borderCountries.map((borderCountry, index) => (
+                                <button
+                                    key={index}
+                                    className={styles.borderCountry}
+                                    onClick={() => handleBorderCountryClick(borderCountry)}
+                                >
+                                    {borderCountry}
+                                </button>
+                            ))}
                         </div>
                     )}
                 </div>

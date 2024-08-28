@@ -3,19 +3,23 @@ import React, {useState} from "react";
 import {CountryList} from "../components/CountryList";
 import {Region} from "../types/types";
 import styles from './HomePage.module.css';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaChevronDown } from 'react-icons/fa';
 
 const ALL="All";
+const capitalizeFirstLetter = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 export const HomePage:React.FC= () => {
     const { countries } = useCountries();
     const regions = [ALL, ...Object.values(Region)];
 
     const [filter, setFilter] = useState('');
-    const [regionFilter, setRegionFilter] = useState(ALL);
+    const [regionFilter, setRegionFilter] = useState('');
 
     const filteredCountries = countries.filter(country => {
         return (country.name.toLowerCase().includes(filter.toLowerCase())) &&
-            (regionFilter.toLowerCase()===ALL.toLowerCase() || country?.region?.toLowerCase()===regionFilter.toLowerCase());
+            (regionFilter === '' || regionFilter.toLowerCase() === ALL.toLowerCase() || country?.region?.toLowerCase() === regionFilter.toLowerCase());
     });
 
     return (
@@ -31,6 +35,7 @@ export const HomePage:React.FC= () => {
                         onChange={(e) => setFilter(e.target.value)}
                     />
                 </div>
+                <div className={styles.select_container}>
                     <select
                         className={styles.select}
                         value={regionFilter}
@@ -38,10 +43,15 @@ export const HomePage:React.FC= () => {
                             setRegionFilter(e.target.value)
                         }}
                     >
+                        <option value="" disabled hidden>Filter by Region</option>
                         {regions.map(region => (
-                            <option key={region} value={region.toLowerCase()}>{region}</option>
+                            <option key={region} value={region.toLowerCase()}>
+                                {region === ALL ? ALL : capitalizeFirstLetter(region)}
+                            </option>
                         ))}
                     </select>
+                    <FaChevronDown className={styles.chevron_icon} />
+                </div>
             </div>
             <CountryList countries={filteredCountries}></CountryList>
         </div>

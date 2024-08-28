@@ -40,8 +40,16 @@
     /* Takes full width of the content area */
 }
 .labeledText {
-    /* Example, adjust as needed */
-    margin-bottom: 10px; /* Space between each LabeledText */
+    font-size: 1rem; /* 16px */
+    margin-bottom: 0.5rem;
+}
+
+.labeledText span:first-child {
+    font-weight: 600;
+}
+
+.labeledText span:last-child {
+    font-weight: normal;
 }
 
 .outerContainer {
@@ -61,6 +69,7 @@
     display: flex;
     align-items: center;
     font-weight: 600;
+    font-size: 1rem; /* 16px */
 }
 
 .backButton::before {
@@ -74,7 +83,8 @@
 }
 
 .countryName {
-    font-size: 2rem;
+    font-size: 2rem; /* 32px */
+    font-weight: 800;
     margin-bottom: 1.5rem;
 }
 
@@ -82,31 +92,39 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+    font-size: 1rem; /* 16px */
+    line-height: 1.5; /* Adjust line height for better readability */
 }
 
 .borderCountries {
-    margin-top: 2rem;
-}
-
-.borderList {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.borderCaption {
+    font-size: 1rem; /* 16px */
+    font-weight: 600;
+    margin-right: 1rem;
 }
 
 .borderCountry {
+    font-size: 1rem; /* 16px */
+    font-weight: 300;
     background-color: var(--secondary-background-color);
     color: var(--text-color);
     border: none;
-    padding: 0.25rem 1rem;
-    border-radius: 5px;
-    font-size: 0.9rem;
+    padding: 5px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 .borderCountry:hover {
-    background-color: var(--focus-color);
+    background-color: var(--hover-color);
 }
 
 @media (max-width: 768px) {

@@ -2,17 +2,13 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    /*justify-content: flex-start;*/
-    /*align-items: center;*/
     width: 100%;
     padding:2rem;
-
     max-width: 1280px;
     margin: 0 auto;
     text-align: center;
-
-
 }
+
 .search_container {
   position: relative;
   display: inline-block;
@@ -26,6 +22,7 @@
   color: var(--text-color);
   opacity: 0.7;
 }
+
 .filter_panel {
     display: flex;
     flex-direction: row;
@@ -35,54 +32,57 @@
 }
 
 .input {
-    /*TODO check how to fix this properly*/
     outline: none;
     color: var(--text-color);
     background-color: var(--secondary-background-color);
     background-size: 24px;
-      padding-inline-start: 52px;
-  padding-inline-end: 10px;
-  padding-block: 0;
+    padding-inline-start: 52px;
+    padding-inline-end: 10px;
+    padding-block: 0;
     width: 100%;
     min-width: 250px;
     max-width: 400px;
-  height: 48px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  border: 1px solid transparent;
-  border-radius: 4px;
-
+    height: 48px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.875rem; /* 14px */
 }
+
 .select:focus-visible {
   outline: 2px solid var(--focus-color);
   outline-offset: 2px;
   box-shadow: 0 0 0 2px var(--background-color);
 }
+
 .select {
     color: var(--text-color);
     outline: none;
     background-color: var(--secondary-background-color);
-    padding-inline-start: 52px; /* Adjust if you're adding an icon inside the select */
-    padding-inline-end: 10px; /* Adjust as needed, especially if you have a dropdown arrow */
+    padding-inline-start: 1.8rem;
+    padding-inline-end: 0.8rem;
     padding-block: 0;
-    /*width: 100%;*/
     width: 200px;
     max-width: 200px;
-    height: 48px; /* Match the input height */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Same shadow as input */
-    border: 1px solid transparent; /* Match the input border */
-    border-radius: 4px; /* Match the input border-radius */
-    appearance: none; /* Remove default browser styling */
-    -webkit-appearance: none; /* Also for Safari */
-    -moz-appearance: none; /* Also for Firefox */
+    height: 48px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     background-repeat: no-repeat;
-    background-position: right 10px center; /* Position for the dropdown icon */
-    background-size: 24px; /* Size of the dropdown icon */
-    font-size: 16px; /* Adjust as needed */
-    cursor: pointer; /* Optional: Changes the cursor to a pointer */
+    background-position: right 10px center;
+    background-size: 24px;
+    font-size: 0.875rem; /* 14px */
+    cursor: pointer;
+    padding-right: 30px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 300;
 }
-/*.select option {*/
-/*    text-transform: capitalize; !* This applies to all text in an option *!*/
-/*}*/
+
 @media (max-width: 768px) {
     .filter_panel {
         display: flex;
@@ -100,4 +100,21 @@
     .input, .select {
         max-width: none;
     }
+}
+
+.select_container {
+    position: relative;
+    display: inline-block;
+}
+
+.chevron_icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.countryItem {
+    font-size: 0.875rem; /* 14px */
 }
