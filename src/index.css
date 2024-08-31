@@ -73,6 +73,19 @@ body {
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none; }
+
+html {
+  overflow-y: scroll;
 }
 
 h1, h2, h3, h4, h5, h6 {
