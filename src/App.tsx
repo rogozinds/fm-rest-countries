@@ -8,8 +8,7 @@ function App() {
     const { theme } = useTheme();
     const themeClass = theme === 'dark' ? 'darkTheme' : 'lightTheme';
     
-    // Define the base path for GitHub Pages
-    const basePath = '/mf-rest-countries';
+    const basePath = '/fm-rest-countries';
 
     return (
         <div id="app" className={themeClass}>
