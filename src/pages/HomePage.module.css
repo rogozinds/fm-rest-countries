@@ -99,7 +99,7 @@
     }
 
     .input {
-        width: 200px;
+        width: 100%;
     }
     .input, .select {
         max-width: none;
